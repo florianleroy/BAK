@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using BankAccountLibrary;
 using NFluent;
 using NUnit.Framework;
@@ -74,6 +75,37 @@ namespace BankAccountTests
 
             //Then
             Check.That(bankAccount.Balance.Value).Equals(100);
+        }
+        
+        [Test]
+        public void BankAccount_TransactionsHistorical_Output()
+        {
+
+            BankAccount bankAccount = new BankAccount();
+            Amount amount = new Amount(1000);
+
+            //When
+            bankAccount.Deposit(amount);
+            bankAccount.Deposit(amount);
+            bankAccount.Deposit(amount);
+            bankAccount.Withdrawal(amount);
+            bankAccount.Deposit(amount);
+            bankAccount.Withdrawal(amount);
+
+            //Then
+            var transactionHistorical = bankAccount.Transactions.ToString();
+            var expectedDate = new TransactionDate().Value;
+
+            var expectedOutput = new StringBuilder()
+                .AppendLine()
+                .AppendLine($"Date = {expectedDate}	DEPOSIT	Amount = 1000	Balance = 1000")
+                .AppendLine($"Date = {expectedDate}	DEPOSIT	Amount = 1000	Balance = 2000")
+                .AppendLine($"Date = {expectedDate}	DEPOSIT	Amount = 1000	Balance = 3000")
+                .AppendLine($"Date = {expectedDate}	WITHDRAWAL	Amount = 1000	Balance = 2000")
+                .AppendLine($"Date = {expectedDate}	DEPOSIT	Amount = 1000	Balance = 3000")
+                .AppendLine($"Date = {expectedDate}	WITHDRAWAL	Amount = 1000	Balance = 2000")
+                .ToString();
+            Check.That(transactionHistorical).IsEqualTo(expectedOutput);
         }
     }
 }
