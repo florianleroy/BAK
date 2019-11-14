@@ -2,6 +2,7 @@ namespace BankAccountLibrary
 {
     public enum TransactionType
     {
-        DEPOSIT
+        DEPOSIT,
+        WITHDRAWAL
     }
 }

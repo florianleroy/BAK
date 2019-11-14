@@ -34,7 +34,10 @@ namespace BankAccountLibrary
         public void Withdrawal(Amount amount)
         {
             if (Amount.IsValid(amount))
+            {
                 Balance -= amount;
+                Transactions.Add(TransactionType.WITHDRAWAL, amount);
+            }   
         }
     }
 }

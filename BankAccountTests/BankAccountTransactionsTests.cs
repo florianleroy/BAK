@@ -39,5 +39,23 @@ namespace BankAccountTests
             
             Check.That(bankAccount.Transactions.Count).Equals(transactionsExpected);
         }
+        
+        [Test]
+        public void MakeSeveralWithdrawal_RegistersSeveralBankAccountTransaction_InTransactionList()
+        {
+            //Given
+            BankAccount bankAccount = new BankAccount();
+            Amount amount = new Amount(100);
+
+            //When
+            bankAccount.Withdrawal(amount);
+            bankAccount.Withdrawal(amount);
+            bankAccount.Withdrawal(amount);
+
+            //Then
+            const int transactionsExpected = 3;
+            
+            Check.That(bankAccount.Transactions.Count).Equals(transactionsExpected);
+        }
     }
 }
