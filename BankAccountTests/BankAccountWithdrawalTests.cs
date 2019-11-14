@@ -51,6 +51,19 @@ namespace BankAccountTests
             Check.That(bankAccount.Balance).Equals(expectedBalance);
         }
 
+        [Test]
+        public void BankAccount_NegativeOrNullAmountWithdrawal_DoesNotTakeEffect_OnBalance()
+        {
+            //Given
+            BankAccount bankAccount = new BankAccount();
+            Amount amount = new Amount(-1000);
+            Balance oldBalance = bankAccount.Balance;
 
+            //When
+            bankAccount.Withdrawal(amount);
+
+            //Then
+            Check.That(bankAccount.Balance).Equals(oldBalance);
+        }
     }
 }
