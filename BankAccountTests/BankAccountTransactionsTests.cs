@@ -21,5 +21,23 @@ namespace BankAccountTests
             //Then
             Check.That(bankAccount.Transactions.IsEmpty).Equals(true);
         }
+
+        [Test]
+        public void MakeSeveralDeposit_RegistersSeveralBankAccountTransaction_InTransactionList()
+        {
+            //Given
+            BankAccount bankAccount = new BankAccount();
+            Amount amount = new Amount(100);
+
+            //When
+            bankAccount.Deposit(amount);
+            bankAccount.Deposit(amount);
+            bankAccount.Deposit(amount);
+
+            //Then
+            const int transactionsExpected = 3;
+            
+            Check.That(bankAccount.Transactions.Count).Equals(transactionsExpected);
+        }
     }
 }

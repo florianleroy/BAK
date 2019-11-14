@@ -25,7 +25,10 @@ namespace BankAccountLibrary
         public void Deposit(Amount amount)
         {
             if (Amount.IsValid(amount))
+            {
                 Balance += amount;
+                Transactions.Add(TransactionType.DEPOSIT, amount);
+            }
         }
 
         public void Withdrawal(Amount amount)
