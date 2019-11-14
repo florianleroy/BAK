@@ -9,7 +9,7 @@ namespace BankAccountLibrary
             get;
         }
 
-        public Balance Balance => Transactions.CalculateBalance();
+        public Balance Balance => Transactions.Balance;
 
         public BankAccount()
         {

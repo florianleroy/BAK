@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 using System.Transactions;
 
 namespace BankAccountLibrary
@@ -20,18 +21,33 @@ namespace BankAccountLibrary
             transactions.Add(new BankAccountTransaction(transactionType, amount));
         }
 
-        public Balance CalculateBalance()
+        public Balance Balance
         {
+            get
+            {
+                Balance balance = new Balance();
+
+                foreach (var transaction in transactions)
+                {
+                    balance += transaction;
+                }
+                return balance;
+            }
+        }
+
+        public override string ToString()
+        {
+            var stringBuilder = new StringBuilder().AppendLine();
             Balance balance = new Balance();
 
             foreach (var transaction in transactions)
             {
-                if (transaction.TransactionType == TransactionType.DEPOSIT)
-                    balance += transaction.Amount;
-                else
-                    balance -= transaction.Amount;
+                balance += transaction;
+
+                stringBuilder.Append(transaction);
+                stringBuilder.AppendLine($"\tBalance = {balance.Value}");
             }
-            return balance;
+            return stringBuilder.ToString();
         }
     }
 }
