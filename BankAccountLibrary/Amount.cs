@@ -13,5 +13,10 @@ namespace BankAccountLibrary
         {
             Value = amount;
         }
+
+        internal static bool IsValid(Amount amount)
+        {
+            return amount != null && amount.Value >= 0;
+        }
     }
 }

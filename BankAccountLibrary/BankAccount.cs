@@ -17,7 +17,8 @@ namespace BankAccountLibrary
 
         public void Deposit(Amount amount)
         {
-            Balance += amount;
+            if (Amount.IsValid(amount))
+                Balance += amount;
         }
     }
 }
