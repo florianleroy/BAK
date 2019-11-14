@@ -20,5 +20,11 @@ namespace BankAccountLibrary
             if (Amount.IsValid(amount))
                 Balance += amount;
         }
+
+        public void Withdrawal(Amount amount)
+        {
+            if (Amount.IsValid(amount))
+                Balance -= amount;
+        }
     }
 }

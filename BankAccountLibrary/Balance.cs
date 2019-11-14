@@ -25,6 +25,13 @@ namespace BankAccountLibrary
             return balance;
         }
 
+        public static Balance operator-(Balance balance, Amount amount)
+        {
+            if (amount != null)
+                return new Balance(balance.Value - amount.Value);
+            return balance;
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())
