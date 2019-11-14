@@ -4,6 +4,12 @@ namespace BankAccountLibrary
 {
     public class BankAccount
     {
+        public Transactions Transactions
+        {
+            get;
+            private set;
+        }
+
         public Balance Balance
         {
             get;
@@ -13,6 +19,7 @@ namespace BankAccountLibrary
         public BankAccount()
         {
             Balance = new Balance();
+            Transactions = new Transactions();
         }
 
         public void Deposit(Amount amount)
