@@ -21,9 +21,10 @@ namespace BankAccountTests
 
             //When
             bankAccount.Deposit(amount);
-            Balance expectedBalance = oldBalance + amount;
 
             //Then
+            Balance expectedBalance = oldBalance + amount;
+
             Check.That(bankAccount.Balance).Equals(expectedBalance);
         }
 
@@ -41,12 +42,12 @@ namespace BankAccountTests
             bankAccount.Deposit(amount);
             bankAccount.Deposit(amount);
 
+            //Then
             Balance expectedBalance = oldBalance
                 + amount
                 + amount
                 + amount;
 
-            //Then
             Check.That(bankAccount.Balance).Equals(expectedBalance);
         }
 

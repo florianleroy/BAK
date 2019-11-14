@@ -22,9 +22,10 @@ namespace BankAccountTests
 
             //When
             bankAccount.Withdrawal(amount);
-            Balance expectedBalance = oldBalance - amount;
 
             //Then
+            Balance expectedBalance = oldBalance - amount;
+
             Check.That(bankAccount.Balance).Equals(expectedBalance);
         }
 
@@ -42,12 +43,12 @@ namespace BankAccountTests
             bankAccount.Withdrawal(amount);
             bankAccount.Withdrawal(amount);
 
+            //Then
             Balance expectedBalance = oldBalance
                 - amount
                 - amount
                 - amount;
 
-            //Then
             Check.That(bankAccount.Balance).Equals(expectedBalance);
         }
 
