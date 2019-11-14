@@ -5,7 +5,7 @@ namespace BankAccountLibrary
 {
     public class Transactions
     {
-        private ICollection<BankAccountTransaction> transactions;
+        private readonly ICollection<BankAccountTransaction> transactions;
         
         public bool IsEmpty => transactions.Count == 0;
         public int Count => transactions.Count;
@@ -18,6 +18,20 @@ namespace BankAccountLibrary
         public void Add(TransactionType transactionType, Amount amount)
         {
             transactions.Add(new BankAccountTransaction(transactionType, amount));
+        }
+
+        public Balance CalculateBalance()
+        {
+            Balance balance = new Balance();
+
+            foreach (var transaction in transactions)
+            {
+                if (transaction.TransactionType == TransactionType.DEPOSIT)
+                    balance += transaction.Amount;
+                else
+                    balance -= transaction.Amount;
+            }
+            return balance;
         }
     }
 }
