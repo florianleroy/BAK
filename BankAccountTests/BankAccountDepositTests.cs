@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace BankAccountTests
 {
-    public class Tests
+    public class BankAccountDepositTests
     {
         [SetUp]
         public void Setup()
