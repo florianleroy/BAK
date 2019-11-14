@@ -26,5 +26,28 @@ namespace BankAccountTests
             //Then
             Check.That(bankAccount.Balance).Equals(expectedBalance);
         }
+
+
+        [Test]
+        public void BankAccount_MultipleAmountDeposit_Increases_Balance()
+        {
+            //Given
+            BankAccount bankAccount = new BankAccount();
+            Amount amount = new Amount(1000);
+            Balance oldBalance = bankAccount.Balance;
+
+            //When
+            bankAccount.Deposit(amount);
+            bankAccount.Deposit(amount);
+            bankAccount.Deposit(amount);
+
+            Balance expectedBalance = oldBalance
+                + amount
+                + amount
+                + amount;
+
+            //Then
+            Check.That(bankAccount.Balance).Equals(expectedBalance);
+        }
     }
 }
