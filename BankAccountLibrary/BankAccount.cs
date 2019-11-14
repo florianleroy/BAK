@@ -7,37 +7,25 @@ namespace BankAccountLibrary
         public Transactions Transactions
         {
             get;
-            private set;
         }
 
-        public Balance Balance
-        {
-            get;
-            private set;
-        }
+        public Balance Balance => Transactions.CalculateBalance();
 
         public BankAccount()
         {
-            Balance = new Balance();
             Transactions = new Transactions();
         }
 
         public void Deposit(Amount amount)
         {
             if (Amount.IsValid(amount))
-            {
-                Balance += amount;
                 Transactions.Add(TransactionType.DEPOSIT, amount);
-            }
         }
 
         public void Withdrawal(Amount amount)
         {
             if (Amount.IsValid(amount))
-            {
-                Balance -= amount;
                 Transactions.Add(TransactionType.WITHDRAWAL, amount);
-            }   
         }
     }
 }

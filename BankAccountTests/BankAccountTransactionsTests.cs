@@ -57,5 +57,23 @@ namespace BankAccountTests
             
             Check.That(bankAccount.Transactions.Count).Equals(transactionsExpected);
         }
+
+        [Test]
+        public void BankAccount_Balance_IsDetuctedFrom_Transactions()
+        {
+            //Given
+            BankAccount bankAccount = new BankAccount();
+            Amount amount = new Amount(100);
+            
+            //When
+            bankAccount.Deposit(amount);
+            bankAccount.Deposit(amount);
+            bankAccount.Withdrawal(amount);
+            bankAccount.Deposit(amount);
+            bankAccount.Withdrawal(amount);
+
+            //Then
+            Check.That(bankAccount.Balance.Value).Equals(100);
+        }
     }
 }

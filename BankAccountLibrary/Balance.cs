@@ -6,14 +6,13 @@ namespace BankAccountLibrary
         public int Value
         {
             get;
-            private set;
         }
 
         public Balance()
         {
         }
 
-        public Balance(int value)
+        private Balance(int value)
         {
             Value = value;
         }
