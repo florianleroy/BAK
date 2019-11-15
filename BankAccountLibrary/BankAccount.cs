@@ -10,6 +10,7 @@ namespace BankAccountLibrary
         }
 
         public Balance Balance => Transactions.Balance;
+        public string Statements => Transactions.Statements;
 
         public BankAccount()
         {

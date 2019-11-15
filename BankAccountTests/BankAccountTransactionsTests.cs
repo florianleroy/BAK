@@ -78,7 +78,7 @@ namespace BankAccountTests
         }
         
         [Test]
-        public void BankAccount_TransactionsHistorical_Output()
+        public void BankAccount_BankAccountStatementsHistorical_Output()
         {
 
             BankAccount bankAccount = new BankAccount();
@@ -93,7 +93,7 @@ namespace BankAccountTests
             bankAccount.Withdrawal(amount);
 
             //Then
-            var transactionHistorical = bankAccount.Transactions.ToString();
+            var statementsHistorical = bankAccount.Statements;
             var expectedDate = new TransactionDate().Value;
 
             var expectedOutput = new StringBuilder()
@@ -105,7 +105,7 @@ namespace BankAccountTests
                 .AppendLine($"Date = {expectedDate}	DEPOSIT	Amount = 1000	Balance = 3000")
                 .AppendLine($"Date = {expectedDate}	WITHDRAWAL	Amount = 1000	Balance = 2000")
                 .ToString();
-            Check.That(transactionHistorical).IsEqualTo(expectedOutput);
+            Check.That(statementsHistorical).IsEqualTo(expectedOutput);
         }
     }
 }

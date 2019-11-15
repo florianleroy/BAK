@@ -35,19 +35,25 @@ namespace BankAccountLibrary
             }
         }
 
-        public override string ToString()
+        public string Statements
         {
-            var stringBuilder = new StringBuilder().AppendLine();
-            Balance balance = new Balance();
-
-            foreach (var transaction in _transactions)
+            get
             {
-                balance += transaction;
+                {
+                    var stringBuilder = new StringBuilder().AppendLine();
+                    Balance balance = new Balance();
 
-                stringBuilder.Append(transaction);
-                stringBuilder.AppendLine($"\tBalance = {balance.Value}");
+                    foreach (var transaction in _transactions)
+                    {
+                        balance += transaction;
+
+                        stringBuilder.Append(transaction);
+                        stringBuilder.AppendLine($"\tBalance = {balance.Value}");
+                    }
+
+                    return stringBuilder.ToString();
+                }
             }
-            return stringBuilder.ToString();
         }
     }
 }
