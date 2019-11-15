@@ -60,7 +60,7 @@ namespace BankAccountTests
         }
 
         [Test]
-        public void BankAccount_Balance_IsDetuctedFrom_Transactions()
+        public void BankAccount_Balance_IsDeductedFrom_Transactions()
         {
             //Given
             BankAccount bankAccount = new BankAccount();
