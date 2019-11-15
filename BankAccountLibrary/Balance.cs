@@ -18,7 +18,7 @@ namespace BankAccountLibrary
             Value = value;
         }
 
-        public static Balance operator +(Balance balance, BankAccountTransaction transaction)
+        public static Balance operator +(Balance balance, Transaction transaction)
         {
             if (transaction == null) return balance;
             

@@ -6,19 +6,19 @@ namespace BankAccountLibrary
 {
     public class Transactions
     {
-        private readonly ICollection<BankAccountTransaction> _transactions;
+        private readonly ICollection<Transaction> _transactions;
         
         public bool IsEmpty => _transactions.Count == 0;
         public int Count => _transactions.Count;
 
         public Transactions()
         {
-            _transactions = new List<BankAccountTransaction>();
+            _transactions = new List<Transaction>();
         }
 
         public void Add(TransactionType transactionType, Amount amount)
         {
-            _transactions.Add(new BankAccountTransaction(transactionType, amount));
+            _transactions.Add(new Transaction(transactionType, amount));
         }
 
         public Balance Balance

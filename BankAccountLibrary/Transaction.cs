@@ -1,17 +1,17 @@
 namespace BankAccountLibrary
 {
-    public class BankAccountTransaction
+    public class Transaction
     {
         private readonly TransactionDate _transactionDate;
         internal readonly TransactionType TransactionType;
         internal readonly Amount Amount;
 
-        private BankAccountTransaction()
+        private Transaction()
         {
             _transactionDate = new TransactionDate();
         }
         
-        public BankAccountTransaction(TransactionType transactionType, Amount amount) : this()
+        public Transaction(TransactionType transactionType, Amount amount) : this()
         {
             TransactionType = transactionType;
             Amount = amount;
