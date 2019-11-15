@@ -2,13 +2,13 @@ namespace BankAccountLibrary
 {
     public class BankAccountTransaction
     {
-        internal readonly TransactionDate TransactionDate;
+        private readonly TransactionDate _transactionDate;
         internal readonly TransactionType TransactionType;
         internal readonly Amount Amount;
-        
-        public BankAccountTransaction()
+
+        private BankAccountTransaction()
         {
-            TransactionDate = new TransactionDate();
+            _transactionDate = new TransactionDate();
         }
         
         public BankAccountTransaction(TransactionType transactionType, Amount amount) : this()
@@ -19,7 +19,7 @@ namespace BankAccountLibrary
 
         public override string ToString()
         {
-            return $"Date = {TransactionDate.Value}\t{TransactionType}\tAmount = {Amount.Value}";
+            return $"Date = {_transactionDate.Value}\t{TransactionType}\tAmount = {Amount.Value}";
         }
     }
 }

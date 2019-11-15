@@ -6,19 +6,19 @@ namespace BankAccountLibrary
 {
     public class Transactions
     {
-        private readonly ICollection<BankAccountTransaction> transactions;
+        private readonly ICollection<BankAccountTransaction> _transactions;
         
-        public bool IsEmpty => transactions.Count == 0;
-        public int Count => transactions.Count;
+        public bool IsEmpty => _transactions.Count == 0;
+        public int Count => _transactions.Count;
 
         public Transactions()
         {
-            transactions = new List<BankAccountTransaction>();
+            _transactions = new List<BankAccountTransaction>();
         }
 
         public void Add(TransactionType transactionType, Amount amount)
         {
-            transactions.Add(new BankAccountTransaction(transactionType, amount));
+            _transactions.Add(new BankAccountTransaction(transactionType, amount));
         }
 
         public Balance Balance
@@ -27,7 +27,7 @@ namespace BankAccountLibrary
             {
                 Balance balance = new Balance();
 
-                foreach (var transaction in transactions)
+                foreach (var transaction in _transactions)
                 {
                     balance += transaction;
                 }
@@ -40,7 +40,7 @@ namespace BankAccountLibrary
             var stringBuilder = new StringBuilder().AppendLine();
             Balance balance = new Balance();
 
-            foreach (var transaction in transactions)
+            foreach (var transaction in _transactions)
             {
                 balance += transaction;
 
